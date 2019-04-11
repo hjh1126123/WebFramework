@@ -10,7 +10,8 @@ function resolve(__dir) {
 module.exports = {
     mode: 'development',
     entry: {
-        page1: './src/page1.ts'
+        home: './page/home.ts',
+        user: './page/user.ts'
     },
     devtool: 'inline-source-map',
     devServer: {
@@ -34,7 +35,22 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: path.join(__dirname, 'template.html'),
             hash: true,
-            filename: 'index.html',
+            filename: 'home.html',
+            chunks: ['home'],
+            minify: {
+                removeComments: true,
+                collapseWhitespace: true
+            }
+        }),
+        new HtmlWebpackPlugin({
+            template: path.join(__dirname, 'template.html'),
+            hash: true,
+            filename: 'user.html',
+            chunks: ['user'],
+            minify: {
+                removeComments: true,
+                collapseWhitespace: true
+            }
         }),
         new UglifyJSPlugin()
     ],
