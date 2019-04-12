@@ -52,12 +52,26 @@ module.exports = {
                 collapseWhitespace: true
             }
         }),
-        new UglifyJSPlugin()
+        new UglifyJSPlugin({
+            cache: true,
+            extractComments: true,
+            sourceMap: true
+        })
     ],
     output: {
         publicPath: './',
         path: resolve('dist'),
         filename: 'components/[name].bundle.js',
         chunkFilename: 'lib/[name].chunk.js'
+    },
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                commons: {
+                    test: /[\\/]lib[\\/]/,                    
+                    chunks: 'async'
+                }
+            }
+        }
     }
 };

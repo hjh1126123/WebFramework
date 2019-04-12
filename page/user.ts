@@ -1,7 +1,8 @@
-import(/* webpackChunkName: "mediator" */ 'lib/mediator').then(({ default: $m }) => {
-    let mediator = new $m();
-    mediator.GetPage().then(p => {
-        p.html`
+import $m from 'lib/mediator'
+let mtor = new $m;
+
+mtor.GetPage().then(async p => {
+    await p.html`
         <div class="$1" data-$1="$2">
             <p>我是</p>
             <p>你是？</p>
@@ -28,7 +29,6 @@ import(/* webpackChunkName: "mediator" */ 'lib/mediator').then(({ default: $m })
                 <li for="(i,k) in 10"></li>
             </ul>
         </div>`;
-        console.log(p.vNode);
-        console.log('这里是user页面');
-    });
-}).catch(error => '中介者载入失败');
+    console.log(p.vNode);
+    console.log('这里是user页面');
+});

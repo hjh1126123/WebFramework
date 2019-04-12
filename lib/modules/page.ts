@@ -1,13 +1,13 @@
-import { page } from './interface'
-import Mediator from './mediator'
+import {
+    page
+} from './_interface'
+import $_ from './_'
 
-class PageUtil implements page {
-    mediator: Mediator;
-
+class Page extends $_ implements page {
     /**
-     * 节点对象
+     * vnode对象
      */
-    public vNode: Array<object>;
+    vNode: object[];
 
     /**
      * 数据模型
@@ -44,7 +44,11 @@ class PageUtil implements page {
 
 
     private h(type: any, props: any, ...children: any) {
-        return { type, props, children };
+        return {
+            type,
+            props,
+            children
+        };
     }
     /**
      * 生成节点
@@ -58,10 +62,6 @@ class PageUtil implements page {
             console.error(ex);
         }
     }
-
-    constructor(mediator: Mediator) {
-        this.mediator = mediator;
-    }
 }
 
-export default (mediator: Mediator) => new PageUtil(mediator);
+export default Page;
