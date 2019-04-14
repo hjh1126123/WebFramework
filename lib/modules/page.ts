@@ -1,9 +1,5 @@
-import {
-    page
-} from './_interface'
-import $_ from './_'
-
-class Page extends $_ implements page {
+/// <reference path="../lib.ts" />
+export default class Page extends lib.IModules implements lib.page {
     /**
      * vnode对象
      */
@@ -63,5 +59,3 @@ class Page extends $_ implements page {
         }
     }
 }
-
-export default Page;

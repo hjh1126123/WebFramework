@@ -1,8 +1,8 @@
-import $m from 'lib/mediator'
-let mtor = new $m;
+/// <reference path="../lib/lib.ts" />
 
-mtor.GetPage().then(async p => {
-    await p.html`
+class user extends lib.IPage {
+    public init(): void {
+        this.html`
         <div class="$1" data-$1="$2">
             <p>我是</p>
             <p>你是？</p>
@@ -29,6 +29,19 @@ mtor.GetPage().then(async p => {
                 <li for="(i,k) in 10"></li>
             </ul>
         </div>`;
-    console.log(p.vNode);
-    console.log('这里是user页面');
-});
+
+        console.log(this.page.vNode);
+    }
+
+    public mounted(): void {
+
+    }
+
+    public leaved(): void {
+
+    }
+}
+
+let _ = new user();
+
+_.init();

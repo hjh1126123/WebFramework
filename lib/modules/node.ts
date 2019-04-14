@@ -1,10 +1,6 @@
-import {
-    node
-} from './_interface'
-import $_ from './_'
+/// <reference path="../lib.ts" />
 
-class Node extends $_ implements node {
-
+export default class Node extends lib.IModules implements lib.node {
     TAG_SET = 1;
     PROPS_SET = 2;
     PROPS_ASSIGN = 3;
@@ -30,10 +26,10 @@ class Node extends $_ implements node {
         let mode: any = this.MODE_TEXT;
         let buffer = '';
         let quote = '';
-        let current: Array < any > = [0];
+        let current: Array<any> = [0];
         let char, propName: any;
 
-        const commit = (field ? : any) => {
+        const commit = (field?: any) => {
             if (mode === this.MODE_TEXT && (field || (buffer = buffer.replace(/^\s*\n\s*|\s*\n\s*$/g, '')))) {
                 current.push(field ? fields[field] : buffer);
             } else if (mode === this.MODE_TAGNAME && (field || buffer)) {
@@ -106,5 +102,3 @@ class Node extends $_ implements node {
         return current.length > 2 ? current.slice(1) : current[1];
     }
 }
-
-export default Node;

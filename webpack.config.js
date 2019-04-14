@@ -31,7 +31,6 @@ module.exports = {
         }
     },
     plugins: [
-        new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             template: path.join(__dirname, 'template.html'),
             hash: true,
@@ -52,6 +51,7 @@ module.exports = {
                 collapseWhitespace: true
             }
         }),
+        new CleanWebpackPlugin(),        
         new UglifyJSPlugin({
             cache: true,
             extractComments: true,
@@ -63,15 +63,5 @@ module.exports = {
         path: resolve('dist'),
         filename: 'components/[name].bundle.js',
         chunkFilename: 'lib/[name].chunk.js'
-    },
-    optimization: {
-        splitChunks: {
-            cacheGroups: {
-                commons: {
-                    test: /[\\/]lib[\\/]/,                    
-                    chunks: 'async'
-                }
-            }
-        }
     }
 };

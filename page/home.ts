@@ -1,2 +1,1 @@
-import $m from 'lib/mediator'
-let mtor = new $m;
+// import $m = lib.Mediator;
